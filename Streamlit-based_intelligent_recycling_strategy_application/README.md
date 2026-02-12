@@ -1,0 +1,76 @@
+# Intelligent Recycling Strategy Table GUI
+
+This is a Streamlit-based intelligent recycling strategy table application for thermodynamic modeling and prediction of metal recycling processes.
+
+## Features
+
+- Periodic table input interface
+- Thermodynamic condition settings (temperature, pressure, time)
+- Metal recovery rate prediction
+- Phase analysis (alloy phase, slag phase, gas phase)
+- Debromination rate prediction
+
+## Installation Requirements
+
+### 1. Python Environment
+
+Ensure your system has Python 3.8 or higher installed.
+
+**Install Python:**
+- Method 1: Download and install from [Python official website](https://www.python.org/downloads/)
+- Method 2: Search and install Python from Microsoft Store
+
+### 2. Dependencies
+
+Run the following command to install required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Or install manually:
+
+```bash
+pip install streamlit pandas numpy scikit-learn xgboost joblib openpyxl
+```
+
+## Usage
+
+1. Open Command Prompt or PowerShell
+2. Navigate to project directory:
+3. Run the application:
+   ```bash
+   python -m streamlit run GUI3.py
+   ```
+
+## Instructions
+
+1. **Input Element Content**: Enter element content values in the periodic table
+2. **Set Conditions**:
+   - T(K): Temperature (Kelvin)
+   - Pre(atm): Pressure (atmosphere)
+   - Time(s): Time (seconds)
+3. **Click Submit**: Submit data for calculation
+4. **View Results**: Check predicted recovery rates and phase information in the output table
+
+## File Description
+
+- `GUI3.py`: Main program file
+- `thermo_fun.py`: Thermodynamic calculation module
+- `data-thermodynamic.xlsx`: Thermodynamic data file
+- `RF_Debromination_rate_Grid.joblib`: Random Forest model file
+- `XGBoost_Debromination_rate_Random.json`: XGBoost model file
+
+## Troubleshooting
+
+### Common Issues
+
+1. **"streamlit is not recognized as an internal or external command"**
+   - Ensure streamlit is installed: `pip install streamlit`
+   - Check if Python environment variables are correctly set
+
+2. **"Module not found" error**
+   - Run `pip install -r requirements.txt` to install all dependencies
+
+3. **File path error**
+   - Ensure all data files are in the same directory
