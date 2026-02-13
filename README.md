@@ -2,47 +2,33 @@
 
 ## Project Overview
 
-This project is an intelligent recycling prediction system based on machine learning and thermodynamic modeling, specifically designed for precious metal recovery rate prediction and organic debromination rate prediction. The system consists of two main modules: a model training module and a Streamlit-based intelligent recycling strategy demonstration application.
+This intelligent recycling strategy table provides an intelligent prediction tool for recycling valuable resources—including critical metals and strategically significant yet hazardous halogens—from urban mines (e.g., spent electronics, batteries, and catalysts). It supports rapid assessment of element phase distribution and recovery rates to guide recycling process optimization.
 
 ## Project Structure
 
 ```
-intelligent recycling strategy/
-├── model_training/                                    # Model training module
-│   ├── model_train/                                   # Training scripts and data
-│   │   ├── train_precious_metal_recovery_models.py    # Precious metal recovery model training
-│   │   ├── train_debromination_models.py              # Debromination model training
-│   │   ├── precious_metal_train_dataset.xlsx          # Precious metal training dataset
-│   │   ├── precious_metal_test_dataset.xlsx           # Precious metal test dataset
-│   │   ├── organic_debromination_train_dataset.xlsx   # Debromination training dataset
-│   │   ├── organic_debromination_test_dataset.xlsx    # Debromination test dataset
-│   │   └── train_results/                             # Training results storage directory
-│   ├── GUI/                                           # Gradio visualization interface
-│   │   ├── GUI.py                                     # Gradio interface main program
-│   │   ├── LOGO.png                                   # System logo
-│   │   └── *.json                                     # Pre-trained model files
-│   ├── README.md                                      # Module documentation
-│   └── requirements.txt                               # Dependency package list
-│
-└── Streamlit-based_intelligent_recycling_strategy_application/  # Intelligent recycling strategy demonstration app
-    ├── GUI3.py                                        # Streamlit main program
-    ├── thermo_fun.py                                  # Thermodynamic calculation module
-    ├── data-thermodynamic.xlsx                       # Thermodynamic data file
-    ├── RF_Debromination_rate_Grid.joblib             # Random Forest debromination model
-    ├── XGBoost_Debromination_rate_Random.json        # XGBoost debromination model
-    ├── README.md                                      # Application documentation
-    └── requirements.txt                               # Dependency package list
+Intelligent-Recycling/
+├── Model Training/                                  # Model training module
+│   ├── train_debromination_models.py              # Debromination model training script
+│   ├── organic_debromination_train_dataset.xlsx   # Debromination training dataset
+│   ├── organic_debromination_test_dataset.xlsx    # Debromination test dataset
+│   ├── train_results/                             # Training results storage directory
+|   └── requirements.txt                           # Dependency package list
+└── Intelligent Recycling Strategy Table/          # Intelligent recycling strategy application
+    ├── GUI3.py                                    # Streamlit main application
+    ├── thermo_fun.py                              # Thermodynamic calculation module
+    ├── data-thermodynamic.xlsx                   # Thermodynamic data file
+    ├── RF_Debromination_rate_Grid.joblib         # Random Forest debromination model
+    ├── XGBoost_Debromination_rate_Random.json    # XGBoost debromination model
+    ├── Example data and expected output.docx     # Example data and output documentation
+    ├── README.md                                  # Application documentation
+    └── requirements.txt                           # Dependency package list
 ```
 
 ## Module Functions
 
 ### 1. Model Training Module (`model_training/`)
 
-#### Precious Metal Recovery Rate Prediction
-- **Supported Metals**: Au (Gold), Ag (Silver), Pd (Palladium), Pt (Platinum), Rh (Rhodium)
-- **Input Features**: 37 process parameters (composition, temperature, time, etc.)
-- **Model Algorithms**: XGBoost, SVM, Random Forest, AdaBoost
-- **Optimization Methods**: Bayesian optimization, Grid search, Random search
 
 #### Debromination Rate Prediction
 - **Prediction Target**: Organic debromination efficiency
@@ -56,13 +42,13 @@ intelligent recycling strategy/
 - Model evaluation metrics (R², MSE, RMSE)
 - Training log files
 
-### 2. Intelligent Recycling Strategy Demonstration Application (`Streamlit-based_intelligent_recycling_strategy_application/`)
+### 2. Element-level Intelligent Recycling Strategy (`Intelligent Recycling Strategy Table`)
 
-An intelligent recycling strategy visualization application based on thermodynamic modeling and machine learning models:
+An element-level intelligent recycling strategy visualization application based on thermodynamic modeling and machine learning models:
 
 #### Core Functions
 - **Periodic Table Input Interface**: Intuitive element content input
-- **Thermodynamic Condition Settings**: Temperature, pressure, time parameter configuration
+- **Thermodynamic Condition Settings**: Temperature, oxygen partial pressure, time parameter configuration
 - **Metal Recovery Rate Prediction**: Recovery rate calculation based on thermodynamic models
 - **Phase Analysis**: Alloy phase, slag phase, gas phase distribution prediction
 - **Debromination Rate Prediction**: Debromination efficiency prediction based on machine learning models
@@ -81,42 +67,51 @@ An intelligent recycling strategy visualization application based on thermodynam
 
 ### 1. Model Training Module Usage
 
+
 #### Install Dependencies
 ```bash
-cd model_training
+cd "Model Training"
 pip install -r requirements.txt
 ```
+*Typical install time on a "normal" desktop computer: 2-5 minutes*
 
-#### Train Precious Metal Recovery Models
-```bash
-cd model_train
-python train_precious_metal_recovery_models.py
-```
 
 #### Train Debromination Models
 ```bash
-cd model_train
+cd "Model Training"
 python train_debromination_models.py
 ```
 
-#### Launch Gradio Prediction Interface for Precious Metal Recovery 
-```bash
-cd GUI
-python GUI.py
-```
+### 2. Element-level Intelligent Recycling Strategy Usage
 
-### 2. Intelligent Recycling Strategy Demonstration Application Usage
 
 #### Install Dependencies
 ```bash
-cd Streamlit-based_intelligent_recycling_strategy_application
+cd "Intelligent Recycling Strategy Table"
 pip install -r requirements.txt
 ```
+*Typical install time on a "normal" desktop computer: 2-5 minutes*
+
 
 #### Launch Application
 ```bash
 python -m streamlit run GUI3.py
 ```
+
+#### Instructions
+
+1. **Input Element Content**: Enter element content values in the periodic table
+2. **Set Conditions**:
+   - T: Temperature (Kelvin)
+   - Pre: Pressure (oxygen partial pressure (atmosphere))
+   - Time: Time (seconds)
+3. **Click Submit**: Submit data for calculation
+4. **View Results**: Check predicted recovery rates and phase information in the output table
+
+*Real-time response: Prediction results are generated within seconds after parameter input.*
+
+For detailed examples of input data formats and expected output interfaces, please refer to the **"Example data and expected output interfaces.pdf"** file in the project root directory. 
+
 
 ## Technical Architecture
 
@@ -127,31 +122,18 @@ python -m streamlit run GUI3.py
 - **AdaBoost**: Adaptive boosting algorithm
 
 ### Thermodynamic Modeling
-- Based on thermodynamic equilibrium principles
+- Based on redox reaction and multi-phase equilibrium principles
 - Multi-phase system modeling (alloy phase, slag phase, gas phase)
-- Analysis of process parameter effects including temperature, pressure, and time
+- Analysis of process parameter effects including temperature, oxygen partial pressure and time
 
 ### Hyperparameter Optimization
 - **Bayesian Optimization**: Efficient global optimization method
 - **Grid Search**: Exhaustive parameter search
 - **Random Search**: Random sampling of parameter space
 
-## Application Scenarios
+## Purpose 
 
-### Urban Mining Development
-- Precious metal recovery optimization from electronic waste
-- Intelligent adjustment of process parameters
-- Recovery efficiency prediction and evaluation
-
-### Environmental Treatment
-- Organic pollutant debromination treatment
-- Treatment effect prediction
-- Process condition optimization
-
-### Industrial Production
-- Precious metal smelting process optimization
-- Production cost control
-- Quality prediction and control
+This tool is designed to aid researchers and engineers in performing fast, data-driven evaluations as well as research and development of urban mine recycling strategies. It helps in identifying optimal conditions for maximizing resource recovery and minimizing environmental impact, and shortens research and development cycles, supporting decisions in urban mining and circular economy initiatives.
 
 ## Key Highlights
 
@@ -160,3 +142,20 @@ python -m streamlit run GUI3.py
 3. **Visualization Interfaces**: Provides both Gradio and Streamlit interface options
 4. **Real-time Prediction**: Supports real-time parameter input and result prediction
 
+## License
+MIT License
+
+
+## Troubleshooting
+
+### Common Issues
+
+1. **"streamlit is not recognized as an internal or external command"**
+   - Ensure streamlit is installed: `pip install streamlit`
+   - Check if Python environment variables are correctly set
+
+2. **"Module not found" error**
+   - Run `pip install -r requirements.txt` to install all dependencies
+
+3. **File path error**
+   - Ensure all data files are in the same directory

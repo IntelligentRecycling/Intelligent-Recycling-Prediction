@@ -26,6 +26,68 @@ np.random.seed(1234)
 logging.basicConfig(filename='train_results/debromination_results/model_optimization.log', level=logging.INFO, 
                    format='%(asctime)s:%(levelname)s:%(message)s')
 
+def clean_data(df):
+    """
+    Simple data cleaning function to handle missing values and outliers
+    
+    Args:
+        df: Input DataFrame
+    
+    Returns:
+        cleaned_df: Cleaned DataFrame
+    """
+    print("Starting data cleaning...")
+    original_shape = df.shape
+    
+    # 1. Remove rows with missing values
+    df_clean = df.dropna()
+    missing_removed = original_shape[0] - df_clean.shape[0]
+    if missing_removed > 0:
+        print(f"Removed {missing_removed} rows with missing values")
+    
+    # 2. Remove negative values in chemical compositions (first 8 columns)
+    chemical_cols = df_clean.columns[:8]  # Na2O, BaO, CaO, FeO, MgO, TiO2, SiO2, Al2O3
+    for col in chemical_cols:
+        negative_count = (df_clean[col] < 0).sum()
+        if negative_count > 0:
+            df_clean = df_clean[df_clean[col] >= 0]
+            print(f"Removed {negative_count} negative values in {col}")
+    
+    # 3. Remove unreasonable temperature values (< 0 or > 1000°C)
+    if 'Temperature' in df_clean.columns:
+        temp_outliers = (df_clean['Temperature'] < 0) | (df_clean['Temperature'] > 1000)
+        temp_removed = temp_outliers.sum()
+        if temp_removed > 0:
+            df_clean = df_clean[~temp_outliers]
+            print(f"Removed {temp_removed} unreasonable temperature values")
+    
+    # 4. Remove negative time values
+    if 'Time' in df_clean.columns:
+        negative_time = (df_clean['Time'] < 0).sum()
+        if negative_time > 0:
+            df_clean = df_clean[df_clean['Time'] >= 0]
+            print(f"Removed {negative_time} negative time values")
+    
+    # 5. Remove target values outside reasonable range (0-100%)
+    target_col = df_clean.columns[-1]  # Last column is target
+    invalid_target = (df_clean[target_col] < 0) | (df_clean[target_col] > 100)
+    target_removed = invalid_target.sum()
+    if target_removed > 0:
+        df_clean = df_clean[~invalid_target]
+        print(f"Removed {target_removed} invalid target values (outside 0-100%)")
+    
+    # 6. Remove duplicate rows
+    duplicates = df_clean.duplicated().sum()
+    if duplicates > 0:
+        df_clean = df_clean.drop_duplicates()
+        print(f"Removed {duplicates} duplicate rows")
+    
+    final_shape = df_clean.shape
+    retention_rate = final_shape[0] / original_shape[0] * 100
+    print(f"Data cleaning completed: {original_shape[0]} -> {final_shape[0]} rows ({retention_rate:.1f}% retained)")
+    
+    return df_clean
+
 def main():
     """Main function: Execute model training workflow"""
     

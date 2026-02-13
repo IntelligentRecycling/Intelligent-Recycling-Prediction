@@ -61,16 +61,3 @@ pip install streamlit pandas numpy scikit-learn xgboost joblib openpyxl
 - `RF_Debromination_rate_Grid.joblib`: Random Forest model file
 - `XGBoost_Debromination_rate_Random.json`: XGBoost model file
 
-## Troubleshooting
-
-### Common Issues
-
-1. **"streamlit is not recognized as an internal or external command"**
-   - Ensure streamlit is installed: `pip install streamlit`
-   - Check if Python environment variables are correctly set
-
-2. **"Module not found" error**
-   - Run `pip install -r requirements.txt` to install all dependencies
-
-3. **File path error**
-   - Ensure all data files are in the same directory
