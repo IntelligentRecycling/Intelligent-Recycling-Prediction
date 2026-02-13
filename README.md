@@ -13,16 +13,19 @@ Intelligent-Recycling/
 │   ├── organic_debromination_train_dataset.xlsx   # Debromination training dataset
 │   ├── organic_debromination_test_dataset.xlsx    # Debromination test dataset
 │   ├── train_results/                             # Training results storage directory
-|   └── requirements.txt                           # Dependency package list
-└── Intelligent Recycling Strategy Table/          # Intelligent recycling strategy application
-    ├── GUI3.py                                    # Streamlit main application
-    ├── thermo_fun.py                              # Thermodynamic calculation module
-    ├── data-thermodynamic.xlsx                   # Thermodynamic data file
-    ├── RF_Debromination_rate_Grid.joblib         # Random Forest debromination model
-    ├── XGBoost_Debromination_rate_Random.json    # XGBoost debromination model
-    ├── Example data and expected output.docx     # Example data and output documentation
-    ├── README.md                                  # Application documentation
-    └── requirements.txt                           # Dependency package list
+│   │   └── debromination_results/                 # Debromination model results
+│   ├── README.md                                  # Model training documentation
+│   └── requirements.txt                           # Dependency package list
+├── Intelligent Recycling Strategy Table/          # Intelligent recycling strategy application
+│   ├── GUI3.py                                    # Streamlit main application
+│   ├── thermo_fun.py                              # Thermodynamic calculation module
+│   ├── data-thermodynamic.xlsx                   # Thermodynamic data file
+│   ├── RF_Debromination_rate_Grid.joblib         # Random Forest debromination model
+│   ├── XGBoost_Debromination_rate_Random.json    # XGBoost debromination model
+│   ├── README.md                                  # Application documentation
+│   └── requirements.txt                           # Dependency package list
+├── Example data and expected output interfaces.pdf # Example data and output documentation
+└── README.md                                      # Main project documentation
 ```
 
 ## Module Functions
@@ -61,10 +64,13 @@ An element-level intelligent recycling strategy visualization application based 
 
 ## Installation and Usage
 
+
 ### Platform and Hardware Requirements
 - **Operating Systems**: Windows 10/11, Linux (Ubuntu 18.04+, CentOS 7+), macOS 10.15+
 - **Python Version**: Python 3.8 or higher (recommended: Python 3.9-3.11)
 - **Hardware**: Standard computer CPU
+
+
 
 ### 1. Model Training Module Usage
 
