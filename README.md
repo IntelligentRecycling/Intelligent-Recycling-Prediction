@@ -103,7 +103,7 @@ python -m streamlit run GUI3.py
 1. **Input Element Content**: Enter element content values in the periodic table
 2. **Set Conditions**:
    - T: Temperature (Kelvin)
-   - Pre: Pressure (oxygen partial pressure (atmosphere))
+   - Pre: Oxygen partial pressure (atmosphere)
    - Time: Time (seconds)
 3. **Click Submit**: Submit data for calculation
 4. **View Results**: Check predicted recovery rates and phase information in the output table
