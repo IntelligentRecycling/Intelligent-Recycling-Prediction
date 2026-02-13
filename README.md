@@ -51,7 +51,7 @@ An element-level intelligent recycling strategy visualization application based 
 
 #### Core Functions
 - **Periodic Table Input Interface**: Intuitive element content input
-- **Thermodynamic Condition Settings**: Temperature, oxygen partial pressure, time parameter configuration
+- **Condition Settings**: Temperature, oxygen partial pressure, time parameter configuration
 - **Metal Recovery Rate Prediction**: Recovery rate calculation based on thermodynamic models
 - **Phase Analysis**: Alloy phase, slag phase, gas phase distribution prediction
 - **Debromination Rate Prediction**: Debromination efficiency prediction based on machine learning models

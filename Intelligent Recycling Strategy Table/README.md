@@ -1,12 +1,12 @@
-# Intelligent Recycling Strategy Table GUI
+# Intelligent Recycling Strategy Table
 
-This is a Streamlit-based intelligent recycling strategy table application for thermodynamic modeling and prediction of metal recycling processes.
+This is a Streamlit-based intelligent recycling strategy table application for modeling and prediction of valuable resource recycling ( including critical metals and halogens.
 
 ## Features
 
 - Periodic table input interface
-- Thermodynamic condition settings (temperature, pressure, time)
-- Metal recovery rate prediction
+- Condition settings (temperature, oxygen partial pressure, time)
+- Element recovery rate prediction
 - Phase analysis (alloy phase, slag phase, gas phase)
 - Debromination rate prediction
 
@@ -45,10 +45,10 @@ pip install streamlit pandas numpy scikit-learn xgboost joblib openpyxl
 
 ## Instructions
 
-1. **Input Element Content**: Enter element content values in the periodic table
+1. **Input Element Content**: Enter element content values in the Intelligent Recycling Strategy Table
 2. **Set Conditions**:
    - T(K): Temperature (Kelvin)
-   - Pre(atm): Pressure (atmosphere)
+   - Pre(atm): Oxygen partial pressure (atmosphere)
    - Time(s): Time (seconds)
 3. **Click Submit**: Submit data for calculation
 4. **View Results**: Check predicted recovery rates and phase information in the output table
