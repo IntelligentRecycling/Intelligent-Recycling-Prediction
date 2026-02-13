@@ -61,9 +61,10 @@ An element-level intelligent recycling strategy visualization application based 
 
 ## Installation and Usage
 
-### System Requirements
-- Python 3.8+
-- Windows/Linux/macOS
+### Platform and Hardware Requirements
+- **Operating Systems**: Windows 10/11, Linux (Ubuntu 18.04+, CentOS 7+), macOS 10.15+
+- **Python Version**: Python 3.8 or higher (recommended: Python 3.9-3.11)
+- **Hardware**: Standard computer CPU
 
 ### 1. Model Training Module Usage
 
